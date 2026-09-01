@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImg from '../assets/logo.jpeg';
 
 interface LogoProps {
   variant?: 'light' | 'dark';
@@ -9,74 +10,38 @@ interface LogoProps {
 export const Logo: React.FC<LogoProps> = ({
   variant = 'light',
   size = 'md',
-  showSubtitle = true
 }) => {
   const isDark = variant === 'dark';
 
-  const iconSizes = {
-    sm: 'w-8 h-8',
-    md: 'w-10 h-10',
-    lg: 'w-14 h-14'
+  const sizeClasses = {
+    sm: 'h-8 sm:h-9 max-w-[140px]',
+    md: 'h-11 sm:h-12 max-w-[190px]',
+    lg: 'h-14 sm:h-16 max-w-[240px]'
   };
 
-  const titleSizes = {
-    sm: 'text-sm tracking-tight',
-    md: 'text-base sm:text-lg tracking-tight',
-    lg: 'text-xl sm:text-2xl tracking-tight'
-  };
-
-  const subSizes = {
-    sm: 'text-[9px] tracking-[0.2em]',
-    md: 'text-[10px] tracking-[0.2em]',
-    lg: 'text-xs tracking-[0.25em]'
-  };
+  if (isDark) {
+    return (
+      <div className="inline-flex items-center select-none group" id="brand-logo-footer">
+        <div className="bg-white p-2 sm:p-2.5 rounded-xs shadow-md border border-[#C5A059]/40 transition-transform duration-200 group-hover:scale-105 flex items-center justify-center">
+          <img
+            src={logoImg}
+            alt="Bazela & Freitas Advogados"
+            className={`${sizeClasses[size]} w-auto object-contain`}
+            loading="eager"
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex items-center gap-3 select-none group" id="brand-logo">
-      {/* Monogram Geometric Emblem */}
-      <div
-        className={`relative ${iconSizes[size]} flex items-center justify-center rounded-xs transition-transform duration-200 group-hover:scale-105 border ${
-          isDark
-            ? 'bg-[#1A2B45] border-[#C5A059]/40 text-white'
-            : 'bg-[#1A2B45] border-[#1A2B45] text-white'
-        }`}
-      >
-        <span
-          className="font-brand font-bold"
-          style={{
-            fontSize: size === 'sm' ? '16px' : size === 'md' ? '20px' : '28px',
-            fontFamily: "'Cinzel', serif",
-            color: '#FFFFFF'
-          }}
-        >
-          BF
-        </span>
-        <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#C5A059]" />
-      </div>
-
-      {/* Typography */}
-      <div className="flex flex-col">
-        <span
-          className={`font-brand font-bold uppercase leading-tight ${titleSizes[size]} ${
-            isDark ? 'text-white' : 'text-[#1A2B45]'
-          }`}
-          style={{ fontFamily: "'Cinzel', serif" }}
-        >
-          Bazela &amp; Freitas
-        </span>
-
-        {showSubtitle && (
-          <div className="flex items-center gap-2 mt-0.5">
-            <span
-              className={`font-sans font-bold uppercase ${subSizes[size]} ${
-                isDark ? 'text-[#C5A059]' : 'text-[#C5A059]'
-              }`}
-            >
-              Direito do Trabalho
-            </span>
-          </div>
-        )}
-      </div>
+    <div className="flex items-center select-none group" id="brand-logo">
+      <img
+        src={logoImg}
+        alt="Bazela & Freitas Advogados"
+        className={`${sizeClasses[size]} w-auto object-contain transition-transform duration-200 group-hover:scale-105`}
+        loading="eager"
+      />
     </div>
   );
 };
