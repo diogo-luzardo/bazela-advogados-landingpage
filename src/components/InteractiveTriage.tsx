@@ -144,7 +144,7 @@ export const InteractiveTriage: React.FC = () => {
 ⏱️ *Tempo de Empresa:* ${timePart}
 💼 *Faixa Salarial:* ${salaryPart}
 
-Gostaria de uma orientação com o advogado trabalhista sobre o meu caso em Santana. Como podemos proceder?`;
+Gostaria de uma orientação com o advogado trabalhista sobre o meu caso no escritório do Tucuruvi / Zona Norte. Como podemos proceder?`;
 
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(message)}`, '_blank');
   };

@@ -2,18 +2,18 @@ import { FAQItem, OfficeLocation, PracticeArea, Testimonial } from '../types';
 
 export const OFFICE_INFO: OfficeLocation = {
   name: 'Bazela & Freitas Advogados',
-  address: 'Rua Voluntários da Pátria, 2816',
-  complement: 'Conjunto 52 - Edifício Santana Corporate',
-  neighborhood: 'Santana (Zona Norte)',
-  cityState: 'São Paulo - SP',
-  cep: '02010-000',
-  metroDistance: 'Apenas 180 metros da Estação de Metrô Santana (Linha 1-Azul)',
-  busTerminalDistance: '2 minutos a pé do Terminal Urbano de Ônibus Santana',
+  address: 'Avenida Nova Cantareira, 2213',
+  complement: 'Conjunto 72',
+  neighborhood: 'Tucuruvi (Zona Norte)',
+  cityState: 'São Paulo/SP',
+  cep: '02331-003',
+  metroDistance: 'Próximo às estações de Metrô Tucuruvi e Parada Inglesa (Linha 1-Azul)',
+  busTerminalDistance: 'Fácil acesso ao Terminal Urbano de Ônibus Tucuruvi',
   landmarks: [
-    'Ao lado do Metrô Santana',
-    'Próximo ao Shopping Center Norte e Lar Center',
-    'Fácil acesso pela Av. Cruzeiro do Sul e Av. Braz Leme',
-    'Estacionamento conveniado no local e total acessibilidade'
+    'Na Avenida Nova Cantareira',
+    'Próximo ao Metrô e Shopping Tucuruvi',
+    'Fácil acesso pela Av. Mazzei e Av. Tucuruvi',
+    'Estacionamento e total acessibilidade no local'
   ],
   phone: '(11) 2978-4500',
   whatsapp: '(11) 98765-4321',
@@ -21,7 +21,7 @@ export const OFFICE_INFO: OfficeLocation = {
   email: 'contato@bazelaefreitas.adv.br',
   oabNumber: 'OAB/SP 48.912 / Sociedade de Advogados',
   hours: 'Segunda a Sexta: 08h30 às 18h30 | Plantão WhatsApp 24h para Trabalhadores',
-  googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.7845371520626!2d-46.62685982379308!3d-23.504245678839074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce587eb0a0ad89%3A0x6b7ca2c5dbef92a5!2sSantana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr'
+  googleMapsEmbedUrl: 'https://maps.google.com/maps?q=Avenida+Nova+Cantareira+2213+Tucuruvi+Sao+Paulo+SP&t=&z=16&ie=UTF8&iwloc=&output=embed'
 };
 
 export const PRACTICE_AREAS: PracticeArea[] = [
@@ -236,12 +236,12 @@ export const TESTIMONIALS: Testimonial[] = [
     id: 'test-5',
     name: 'Fernando Guimarães',
     profession: 'Motorista de Distribuição',
-    neighborhood: 'Casa Verde - Zona Norte',
+    neighborhood: 'Tucuruvi - Zona Norte',
     rating: 5,
     date: 'Há 2 semanas',
-    comment: 'Escritório super bem localizado na Voluntários da Pátria, bem do lado do metrô Santana. Facilidade imensa para ir e conversar. Acompanhamento do processo foi impecável, sempre me avisando de cada andamento pelo WhatsApp.',
+    comment: 'Escritório super bem localizado na Avenida Nova Cantareira no Tucuruvi. Facilidade imensa para ir e conversar. Acompanhamento do processo foi impecável, sempre me avisando de cada andamento pelo WhatsApp.',
     outcome: 'Acordo homologado com recebimento rápido de verbas rescisórias',
-    tag: 'Atendimento Santana'
+    tag: 'Atendimento Tucuruvi'
   }
 ];
 
@@ -296,11 +296,11 @@ export const FAQ_LIST: FAQItem[] = [
   },
   {
     id: 'faq-7',
-    question: 'O atendimento pode ser presencial em Santana ou totalmente online?',
+    question: 'O atendimento pode ser presencial no escritório ou totalmente online?',
     category: 'geral',
     googleSearchVolumeBadge: 'Zona Norte SP',
     cltReference: 'Atendimento Híbrido Seguro',
-    answer: 'Oferecemos as duas opções para seu conforto e segurança! Nosso escritório fica em localização privilegiada em Santana (Rua Voluntários da Pátria, a 180m do Metrô Santana), com salas privativas e acessibilidade. Caso prefira não se deslocar, realizamos todo o atendimento digital pelo WhatsApp, envio de documentos seguro e reuniões por videoconferência.'
+    answer: 'Oferecemos as duas opções para seu conforto e segurança! Nosso escritório fica em localização privilegiada na Avenida Nova Cantareira, 2213, Conjunto 72 (Tucuruvi, Zona Norte de SP), com salas privativas e acessibilidade. Caso prefira não se deslocar, realizamos todo o atendimento digital pelo WhatsApp, envio de documentos seguro e reuniões por videoconferência.'
   }
 ];
 
@@ -344,7 +344,7 @@ export const TRIAGE_QUESTIONS = [
 export const WHATSAPP_AUTO_FLOW = [
   {
     step: '1. Mensagem de Boas-Vindas Imediata',
-    botReply: 'Olá! Seja muito bem-vindo(a) ao Bazela & Freitas Advogados - Advocacia Trabalhista Santana/Zona Norte SP.',
+    botReply: 'Olá! Seja muito bem-vindo(a) ao Bazela & Freitas Advogados - Advocacia Trabalhista Tucuruvi / Zona Norte SP.',
     description: 'Resposta instantânea para que o trabalhador saiba que seu caso está sendo recebido de imediato.'
   },
   {

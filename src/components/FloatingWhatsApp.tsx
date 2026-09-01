@@ -14,7 +14,7 @@ export const FloatingWhatsApp: React.FC = () => {
   ];
 
   const handleSend = (textToSend?: string) => {
-    const message = textToSend || customMsg || 'Olá! Gostaria de conversar com um advogado trabalhista da Bazela & Freitas em Santana.';
+    const message = textToSend || customMsg || 'Olá! Gostaria de conversar com um advogado trabalhista da Bazela & Freitas no Tucuruvi.';
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(message)}`, '_blank');
     setIsOpen(false);
     setCustomMsg('');
@@ -40,7 +40,7 @@ export const FloatingWhatsApp: React.FC = () => {
                   Bazela &amp; Freitas Advogados
                 </h4>
                 <p className="text-[10px] text-[#C5A059] font-semibold flex items-center gap-1 uppercase tracking-wider">
-                  <Clock className="w-3 h-3" /> Plantão Trabalhista Santana
+                  <Clock className="w-3 h-3" /> Plantão Trabalhista Tucuruvi
                 </p>
               </div>
             </div>

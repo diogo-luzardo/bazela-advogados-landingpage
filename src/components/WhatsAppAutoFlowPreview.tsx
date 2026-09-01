@@ -17,7 +17,7 @@ export const WhatsAppAutoFlowPreview: React.FC = () => {
   const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [userSimulationText, setUserSimulationText] = useState('');
   const [chatMessages, setChatMessages] = useState([
-    { sender: 'bot', text: '👋 Olá! Bem-vindo ao atendimento trabalhista da Bazela & Freitas Advogados (Santana - SP).', time: 'Agora' },
+    { sender: 'bot', text: '👋 Olá! Bem-vindo ao atendimento trabalhista da Bazela & Freitas Advogados (Tucuruvi / Zona Norte SP).', time: 'Agora' },
     { sender: 'bot', text: 'Sou o assistente de triagem jurídica. Para agilizar o seu caso com nosso advogado especialista, qual a sua dúvida principal?', time: 'Agora' }
   ]);
 
@@ -38,7 +38,7 @@ export const WhatsAppAutoFlowPreview: React.FC = () => {
         ...prev,
         {
           sender: 'bot',
-          text: `Entendido! Identificamos que o seu caso envolve prazos prioritários da CLT. Um dos nossos advogados especialistas em Santana já recebeu suas informações e vai continuar seu atendimento diretamente no WhatsApp.`,
+          text: `Entendido! Identificamos que o seu caso envolve prazos prioritários da CLT. Um dos nossos advogados especialistas já recebeu suas informações e vai continuar seu atendimento diretamente no WhatsApp.`,
           time: 'Agora'
         }
       ]);
@@ -51,7 +51,7 @@ export const WhatsAppAutoFlowPreview: React.FC = () => {
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-[#F8F9FA] text-[#2C3E50] border-b border-[#E5E7EB]" id="atendimento-whatsapp">
+    <section className="py-16 lg:py-24 bg-[#F8F9FA] text-[#2C3E50] border-b border-[#E5E7EB]" id="fluxo-atendimento">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Geometric Balance Styling */}
@@ -59,16 +59,16 @@ export const WhatsAppAutoFlowPreview: React.FC = () => {
           <div className="inline-flex items-center gap-2">
             <span className="w-2 h-2 bg-[#C5A059]" />
             <span className="text-xs font-black uppercase tracking-[0.2em] text-[#1A2B45]">
-              Atendimento Imediato • Plantão 24 Horas
+              Atendimento Célere &amp; Sem Burocracia
             </span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-serif text-[#1A2B45] tracking-tight font-brand" style={{ fontFamily: "'Cinzel', serif" }}>
-            Estrutura de Triagem &amp; Resposta Automática no WhatsApp
+            Como Funciona Nosso Atendimento
           </h2>
 
           <p className="text-base text-slate-600 leading-relaxed font-sans">
-            Para que você não perca prazos da Justiça do Trabalho, nossa infraestrutura acolhe o trabalhador 24 horas por dia com triagem preliminar inteligente e encaminhamento imediato ao advogado especialista em Santana.
+            Para que você não perca prazos da Justiça do Trabalho, nossa infraestrutura acolhe o trabalhador 24 horas por dia com triagem preliminar inteligente e encaminhamento imediato ao advogado especialista da Zona Norte de SP.
           </p>
         </div>
 
@@ -143,7 +143,7 @@ export const WhatsAppAutoFlowPreview: React.FC = () => {
                       Bazela &amp; Freitas Advogados
                     </h4>
                     <p className="text-[10px] text-[#C5A059] font-semibold uppercase tracking-wider">
-                      Online • Advocacia Trabalhista Santana
+                      Online • Advocacia Trabalhista Zona Norte SP
                     </p>
                   </div>
                 </div>

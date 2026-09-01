@@ -11,9 +11,9 @@ export const QuickStatsBar: React.FC = () => {
     },
     {
       icon: Train,
-      value: '180 metros',
-      label: 'Do Metrô Santana',
-      subtext: 'Linha 1-Azul e Terminal Ônibus'
+      value: 'Tucuruvi',
+      label: 'Av. Nova Cantareira',
+      subtext: 'Próximo ao Metrô Linha 1-Azul'
     },
     {
       icon: Award,

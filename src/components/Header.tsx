@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navLinks = [
     { label: 'Áreas de Atuação', href: '#areas-de-atuacao' },
-    { label: 'Localização Santana', href: '#localizacao-santana' },
+    { label: 'Localização Tucuruvi', href: '#localizacao' },
     { label: 'Simulador de Direitos', href: '#simulador-direitos' },
     { label: 'Depoimentos', href: '#depoimentos' },
     { label: 'Dúvidas Frequentes', href: '#faq' },
@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
-      'Olá! Gostaria de uma orientação com um advogado trabalhista da Bazela & Freitas em Santana.'
+      'Olá! Gostaria de uma orientação com um advogado trabalhista da Bazela & Freitas no Tucuruvi.'
     );
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${message}`, '_blank');
   };
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-1.5 text-[#C5A059] font-bold uppercase tracking-wider text-[11px]">
               <span className="w-2 h-2 bg-[#C5A059]" />
               <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span>Santana, Zona Norte - SP (A 180m do Metrô Santana)</span>
+              <span>Tucuruvi, Zona Norte - SP (Av. Nova Cantareira, 2213 - Cj 72)</span>
             </div>
             <div className="hidden sm:flex items-center gap-1.5 text-slate-300 text-[11px]">
               <Clock className="w-3.5 h-3.5 text-slate-400" />
@@ -217,8 +217,8 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
 
               <div className="text-xs text-slate-300 text-center flex flex-col gap-1 py-1">
-                <span>📍 Rua Voluntários da Pátria, 2816 - Santana</span>
-                <span>Ao lado da Estação Metrô Santana</span>
+                <span>📍 Av. Nova Cantareira, 2213 - Conjunto 72, Tucuruvi</span>
+                <span>Zona Norte - São Paulo/SP (CEP 02331-003)</span>
               </div>
             </div>
           </div>

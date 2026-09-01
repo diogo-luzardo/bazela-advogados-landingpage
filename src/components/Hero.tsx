@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
   const handleWhatsAppConsult = (subject?: string) => {
     const text = subject
       ? `Olá, Bazela & Freitas Advogados. Gostaria de tirar dúvidas sobre ${subject}. Podem me orientar?`
-      : 'Olá, Bazela & Freitas Advogados! Preciso de orientação com um advogado especialista em Direito do Trabalho em Santana.';
+      : 'Olá, Bazela & Freitas Advogados! Preciso de orientação com um advogado especialista em Direito do Trabalho no Tucuruvi.';
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
             <div className="inline-flex items-center gap-2">
               <span className="w-2 h-2 bg-[#C5A059]" />
               <span className="text-[#C5A059] font-bold text-xs sm:text-sm uppercase tracking-widest">
-                Especialistas em causas trabalhistas • Santana - Zona Norte SP
+                Especialistas em causas trabalhistas • Tucuruvi - Zona Norte SP
               </span>
             </div>
 
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
 
             {/* Subheading focusing on worker rights protection */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-sans max-w-xl">
-              Localização estratégica no coração de Santana, a 180m do metrô. Atuação especializada e célere em <strong className="text-[#1A2B45] font-semibold">Rescisão Indireta</strong>, <strong className="text-[#1A2B45] font-semibold">Horas Extras</strong>, <strong className="text-[#1A2B45] font-semibold">Fraude de PJ/MEI</strong> e <strong className="text-[#1A2B45] font-semibold">Verbas Rescisórias</strong>.
+              Localização estratégica na Av. Nova Cantareira, 2213 (Tucuruvi). Atuação especializada e célere em <strong className="text-[#1A2B45] font-semibold">Rescisão Indireta</strong>, <strong className="text-[#1A2B45] font-semibold">Horas Extras</strong>, <strong className="text-[#1A2B45] font-semibold">Fraude de PJ/MEI</strong> e <strong className="text-[#1A2B45] font-semibold">Verbas Rescisórias</strong>.
             </p>
 
             {/* Geometric Experience Badges */}
@@ -57,8 +57,8 @@ export const Hero: React.FC = () => {
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Causas Conduzidas</span>
               </div>
               <div className="border-l-4 border-[#1A2B45] pl-3 py-1 col-span-2 sm:col-span-1">
-                <span className="block text-2xl font-bold text-[#1A2B45] font-brand">180m</span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Metrô Santana</span>
+                <span className="block text-2xl font-bold text-[#1A2B45] font-brand">Tucuruvi</span>
+                <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Zona Norte SP</span>
               </div>
             </div>
 
@@ -105,7 +105,7 @@ export const Hero: React.FC = () => {
                   <span>Análise de Caso Preliminar</span>
                 </div>
                 <span className="text-[10px] uppercase font-bold text-[#C5A059] tracking-widest bg-white px-2 py-0.5 border border-[#E5E7EB]">
-                  Plantão Santana
+                  Plantão Tucuruvi
                 </span>
               </div>
 
