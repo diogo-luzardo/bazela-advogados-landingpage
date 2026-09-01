@@ -14,15 +14,15 @@ export const Logo: React.FC<LogoProps> = ({
   const isDark = variant === 'dark';
 
   const sizeClasses = {
-    sm: 'h-8 sm:h-9 max-w-[140px]',
-    md: 'h-11 sm:h-12 max-w-[190px]',
-    lg: 'h-14 sm:h-16 max-w-[240px]'
+    sm: 'h-9 sm:h-11 max-w-[170px]',
+    md: 'h-14 sm:h-16 max-w-[240px]',
+    lg: 'h-20 sm:h-24 max-w-[320px]'
   };
 
   if (isDark) {
     return (
       <div className="inline-flex items-center select-none group" id="brand-logo-footer">
-        <div className="bg-white p-2 sm:p-2.5 rounded-xs shadow-md border border-[#C5A059]/40 transition-transform duration-200 group-hover:scale-105 flex items-center justify-center">
+        <div className="bg-white p-3 sm:p-4 rounded-xs shadow-md border border-[#C5A059]/40 transition-transform duration-200 group-hover:scale-105 flex items-center justify-center">
           <img
             src={logoImg}
             alt="Bazela & Freitas Advogados"
