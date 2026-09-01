@@ -42,9 +42,9 @@ export const Header: React.FC<HeaderProps> = ({
     { label: 'Áreas de Atuação', href: '#areas-de-atuacao' },
     { label: 'Localização Tucuruvi', href: '#localizacao' },
     { label: 'Simulador de Direitos', href: '#simulador-direitos' },
+    { label: 'Sócios', href: '#socios' },
     { label: 'Depoimentos', href: '#depoimentos' },
     { label: 'Dúvidas Frequentes', href: '#faq' },
-    { label: 'Contato', href: '#contato' },
   ];
 
   const handleWhatsAppClick = () => {

@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { QuickStatsBar } from './components/QuickStatsBar';
 import { PracticeAreas } from './components/PracticeAreas';
 import { StrategicLocation } from './components/StrategicLocation';
+import { Partners } from './components/Partners';
 import { InteractiveTriage } from './components/InteractiveTriage';
 import { WhatsAppAutoFlowPreview } from './components/WhatsAppAutoFlowPreview';
 import { Testimonials } from './components/Testimonials';
@@ -61,6 +62,9 @@ export default function App() {
 
         {/* Interactive Labor Rights Simulator & WhatsApp Triage */}
         <InteractiveTriage />
+
+        {/* Partners / Sócios Fundadores */}
+        <Partners />
 
         {/* WhatsApp Automated Response Flow Architecture */}
         <WhatsAppAutoFlowPreview />
