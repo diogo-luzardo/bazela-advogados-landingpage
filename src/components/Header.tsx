@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import { OFFICE_INFO } from '../data/firmData';
 import { useTheme } from '../context/ThemeContext';
+import { whatsappImg } from '../assets';
 import { 
   Phone, 
   Mail, 
@@ -208,7 +209,7 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="Consulte-nos pelo WhatsApp"
             >
               <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-2xs p-1.5">
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+                <img src={whatsappImg} alt="WhatsApp" className="w-full h-full object-contain" />
               </div>
               <div className="leading-tight">
                 <span className="block text-[11px] font-serif font-bold text-slate-900 uppercase tracking-wider">
@@ -228,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="sm:hidden p-2 rounded-sm bg-emerald-500 text-white"
               aria-label="WhatsApp"
             >
-              <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />
+              <img src={whatsappImg} alt="WhatsApp" className="w-5 h-5 object-contain" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -266,7 +267,7 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2"
             >
-              <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain" />
+              <img src={whatsappImg} alt="WhatsApp" className="w-5 h-5 object-contain" />
               <span>Consulte-nos: {OFFICE_INFO.whatsapp}</span>
             </button>
 

@@ -1,4 +1,5 @@
 import { FAQItem, OfficeLocation, PracticeArea, Testimonial } from '../types';
+import { danielImg, dalilaImg } from '../assets';
 
 export const OFFICE_INFO: OfficeLocation = {
   name: 'Bazela & Freitas Advogados Associados',
@@ -71,7 +72,7 @@ export const PARTNERS_DATA: PartnerData[] = [
     badge: 'Especialista em Direito do Trabalho, Cível e Família',
     experience: 'Mais de 15 anos de experiência forense',
     stats: '+5.000 Processos Conduzidos',
-    image: '/daniel.jpeg',
+    image: danielImg,
     lead: 'Advogado atuante com sólida trajetória jurídica e vasta experiência na condução estratégica de litígios complexos.',
     history: [
       'Ao longo de mais de 15 anos de prática jurídica ininterrupta, liderou a condução de mais de 5.000 ações judiciais, destacando-se pela combatividade técnica e oratória precisa perante os tribunais.',
@@ -95,7 +96,7 @@ export const PARTNERS_DATA: PartnerData[] = [
     badge: 'Advogada Especialista em Direito do Trabalho',
     experience: 'Mais de 15 anos de atuação dedicada',
     stats: 'Foco Exclusivo em Direito do Trabalho',
-    image: '/dalila.jpeg',
+    image: dalilaImg,
     lead: 'Advogada especialista com sólida e reconhecida trajetória na defesa dos direitos dos trabalhadores.',
     history: [
       'Possui mais de 15 anos de dedicação exclusiva às relações do trabalho, com histórico de destaque no combate a fraudes contratuais (como pejotização abusiva e contratos MEI simulados), reversões de demissões injustas, rescisões indiretas e acordos de alta relevância.',

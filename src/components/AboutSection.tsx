@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { OFFICE_INFO, ABOUT_FIRM, PARTNERS_DATA } from '../data/firmData';
 import { useTheme } from '../context/ThemeContext';
+import { logoImg, whatsappImg } from '../assets';
 import { 
   X, 
   ShieldCheck, 
@@ -206,7 +207,7 @@ export const AboutSection: React.FC = () => {
                     {/* Logo Image with Ken Burns smooth scale */}
                     <div className="w-full max-w-sm py-4 px-2 overflow-hidden">
                       <img
-                        src="/logo.jpeg"
+                        src={logoImg}
                         alt="Logo Oficial Bazela & Freitas Advogados Associados"
                         className={`w-full h-auto max-h-48 object-contain mx-auto transition-transform duration-5000 ease-out ${
                           currentSlide === 0 ? 'scale-104' : 'scale-100'
@@ -239,7 +240,7 @@ export const AboutSection: React.FC = () => {
                     aria-label="Consulte-nos pelo WhatsApp"
                   >
                     <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform shadow-sm p-2">
-                      <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+                      <img src={whatsappImg} alt="WhatsApp" className="w-full h-full object-contain" />
                     </div>
                     <div className="leading-tight text-left">
                       <h4 className="text-xs font-serif font-bold uppercase text-slate-900 tracking-wider">
@@ -341,7 +342,7 @@ export const AboutSection: React.FC = () => {
                       onClick={handleWhatsAppOffice}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-xs bg-emerald-600 hover:bg-emerald-700 text-white font-serif font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-sm hover:scale-102"
                     >
-                      <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                      <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain" />
                       <span>Falar no WhatsApp</span>
                     </button>
                   </div>
@@ -399,7 +400,7 @@ export const AboutSection: React.FC = () => {
                     onClick={() => handleWhatsAppPartner(daniel.name, daniel.whatsappMessage)}
                     className="flex items-center justify-center gap-3 p-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xs transition-colors shadow-sm w-full cursor-pointer group"
                   >
-                    <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" />
+                    <img src={whatsappImg} alt="WhatsApp" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" />
                     <div className="text-left leading-tight">
                       <span className="text-[11px] uppercase tracking-wider font-semibold block text-emerald-100">
                         Contato Direto
@@ -515,7 +516,7 @@ export const AboutSection: React.FC = () => {
                       className="inline-flex items-center gap-2 px-7 py-3 rounded-xs text-white font-serif font-bold text-xs uppercase tracking-widest transition-all duration-200 hover:opacity-90 cursor-pointer shadow-sm hover:scale-102"
                       style={{ backgroundColor: currentTheme.primary }}
                     >
-                      <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                      <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain" />
                       <span>Consultar Dr. Daniel Bazela</span>
                     </button>
                   </div>
@@ -573,7 +574,7 @@ export const AboutSection: React.FC = () => {
                     onClick={() => handleWhatsAppPartner(dalila.name, dalila.whatsappMessage)}
                     className="flex items-center justify-center gap-3 p-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xs transition-colors shadow-sm w-full cursor-pointer group"
                   >
-                    <img src="/whatsapp.png" alt="WhatsApp" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" />
+                    <img src={whatsappImg} alt="WhatsApp" className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" />
                     <div className="text-left leading-tight">
                       <span className="text-[11px] uppercase tracking-wider font-semibold block text-emerald-100">
                         Contato Direto
@@ -689,7 +690,7 @@ export const AboutSection: React.FC = () => {
                       className="inline-flex items-center gap-2 px-7 py-3 rounded-xs text-white font-serif font-bold text-xs uppercase tracking-widest transition-all duration-200 hover:opacity-90 cursor-pointer shadow-sm hover:scale-102"
                       style={{ backgroundColor: currentTheme.primary }}
                     >
-                      <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                      <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain" />
                       <span>Consultar Dra. Dalila Freitas</span>
                     </button>
                   </div>
@@ -805,7 +806,7 @@ export const AboutSection: React.FC = () => {
                 }}
                 className="w-full sm:w-auto px-6 py-2.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:scale-102 transition-transform"
               >
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+                <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain" />
                 <span>Falar com Advogado no WhatsApp</span>
               </button>
             </div>

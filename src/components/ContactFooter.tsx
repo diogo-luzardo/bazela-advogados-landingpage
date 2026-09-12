@@ -2,6 +2,7 @@ import React from 'react';
 import { Logo } from './Logo';
 import { OFFICE_INFO } from '../data/firmData';
 import { useTheme } from '../context/ThemeContext';
+import { whatsappImg } from '../assets';
 import { 
   MapPin, 
   Mail, 
@@ -151,7 +152,7 @@ export const ContactFooter: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain flex-shrink-0" />
+                <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain flex-shrink-0" />
                 <a 
                   href={`https://wa.me/${OFFICE_INFO.whatsappRaw}`}
                   target="_blank"

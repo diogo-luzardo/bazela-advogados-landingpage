@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { OFFICE_INFO } from '../data/firmData';
+import { whatsappImg } from '../assets';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 export const FloatingWhatsApp: React.FC = () => {
@@ -23,7 +24,7 @@ export const FloatingWhatsApp: React.FC = () => {
           <div className="bg-[#075E54] text-white p-3.5 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center p-1">
-                <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+                <img src={whatsappImg} alt="WhatsApp" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h4 className="text-xs font-bold font-sans text-white">
@@ -59,7 +60,7 @@ export const FloatingWhatsApp: React.FC = () => {
               onClick={handleOpenWhatsApp}
               className="w-full py-2.5 px-4 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-xs uppercase tracking-wider rounded flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md hover:scale-[1.02]"
             >
-              <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain" />
+              <img src={whatsappImg} alt="WhatsApp" className="w-4 h-4 object-contain" />
               <span>Abrir Whatsapp</span>
             </button>
           </div>
@@ -95,7 +96,7 @@ export const FloatingWhatsApp: React.FC = () => {
           aria-label="Abrir atendimento no WhatsApp"
           className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl transition-transform hover:scale-105 active:scale-95 cursor-pointer relative group p-3"
         >
-          <img src="/whatsapp.png" alt="WhatsApp" className="w-full h-full object-contain" />
+          <img src={whatsappImg} alt="WhatsApp" className="w-full h-full object-contain" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white animate-pulse" />
         </button>
       </div>
