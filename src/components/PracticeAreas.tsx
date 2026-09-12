@@ -1,265 +1,246 @@
 import React, { useState } from 'react';
-import { PRACTICE_AREAS, OFFICE_INFO } from '../data/lawFirmData';
+import { PRACTICE_AREAS, OFFICE_INFO } from '../data/firmData';
 import { PracticeArea } from '../types';
-import { 
-  ShieldAlert, 
-  Receipt, 
-  Clock, 
-  FileCheck2, 
-  HeartPulse, 
-  UserX, 
-  Baby, 
-  Flame, 
-  ArrowRight, 
-  CheckCircle2, 
-  MessageCircle, 
-  Search,
-  Scale
-} from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { Scale, CheckCircle2, MessageCircle, X, ArrowRight } from 'lucide-react';
 
-const ICON_MAP: Record<string, React.ElementType> = {
-  ShieldAlert,
-  ReceiptCheck: Receipt,
-  ClockAlert: Clock,
-  FileBadge: FileCheck2,
-  HeartPulse,
-  UserX,
-  Baby,
-  Flame,
-};
+interface ExtendedArea {
+  id: string;
+  title: string;
+  scopeList: string[];
+  description: string;
+}
 
 export const PracticeAreas: React.FC = () => {
-  const [selectedArea, setSelectedArea] = useState<PracticeArea | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { currentTheme } = useTheme();
+  const [selectedArea, setSelectedArea] = useState<ExtendedArea | null>(null);
 
-  const filteredAreas = PRACTICE_AREAS.filter((area) =>
-    area.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    area.shortDesc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    area.commonSigns.some(sign => sign.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  // Extended multidisciplinary areas matching the exact list in Brancaleão & Marigo:
+  // TRABALHISTA, FAMÍLIA, LGPD / EMPRESARIAL, CÍVEL, PREVIDENCIÁRIO, DEFESA DO CONSUMIDOR, IMOBILIÁRIO, DIREITO MÉDICO
+  const areasList: ExtendedArea[] = [
+    {
+      id: 'trabalhista',
+      title: 'TRABALHISTA',
+      description: 'Consultoria preventiva para empresas e defesa técnica rigorosa em reclamações trabalhistas contenciosas.',
+      scopeList: [
+        'Prevenção de passivos e autuações trabalhistas',
+        'Auditoria de rotinas de RH, contratos e rescisões',
+        'Defesa patronal em reclamações trabalhistas e acordos',
+        'Rescisão indireta, horas extras e verbas rescisórias'
+      ]
+    },
+    {
+      id: 'familia',
+      title: 'FAMÍLIA',
+      description: 'Inventários judiciais e extrajudiciais (cartório), divórcios, alimentos e planejamento sucessório com equilíbrio e sigilo.',
+      scopeList: [
+        'Inventário extrajudicial em cartório (rápido e econômico)',
+        'Divórcio consensual e litigioso com partilha de bens',
+        'Pensão alimentícia, guarda compartilhada e visitas',
+        'Pactos antenupciais e reconhecimento de união estável'
+      ]
+    },
+    {
+      id: 'empresarial',
+      title: 'EMPRESARIAL & LGPD',
+      description: 'Assessoria jurídica corporativa contínua, governança societária, contratos comerciais e adequação à LGPD.',
+      scopeList: [
+        'Assessoria jurídica consultiva mensal para empresas (PMEs)',
+        'Elaboração de acordos de sócios e estatutos societários',
+        'Mitigação de riscos jurídicos e compliance',
+        'Políticas de privacidade e adequação à Lei Geral de Proteção de Dados'
+      ]
+    },
+    {
+      id: 'civel',
+      title: 'CÍVEL',
+      description: 'Gestão de litígios contratuais, ações indenizatórias por danos morais e materiais, execuções e recuperação de crédito.',
+      scopeList: [
+        'Elaboração, análise e revisão de instrumentos contratuais',
+        'Ações de cobrança, execuções judiciais e recuperação de ativos',
+        'Ações de reparação civil por danos morais e materiais',
+        'Disputas societárias e inadimplemento obrigacional'
+      ]
+    },
+    {
+      id: 'previdenciario',
+      title: 'PREVIDENCIÁRIO',
+      description: 'Planejamento previdenciário minucioso, concessão e revisão de aposentadorias perante o INSS e Justiça Federal.',
+      scopeList: [
+        'Planejamento previdenciário e cálculo do momento ideal',
+        'Aposentadoria por tempo de contribuição, idade e especial',
+        'Revisões de benefícios e cálculo da vida toda',
+        'Auxílios por incapacidade temporária (doença) e BPC/LOAS'
+      ]
+    },
+    {
+      id: 'consumidor',
+      title: 'DEFESA DO CONSUMIDOR',
+      description: 'Proteção contra cobranças indevidas, negativação irregular em órgãos de crédito, fraudes bancárias e planos de saúde.',
+      scopeList: [
+        'Ações contra golpes do Pix, fraudes bancárias e clonagem',
+        'Obrigações de fazer contra negativas abusivas de planos de saúde',
+        'Indenizações por negativação indevida (SPC / Serasa)',
+        'Cancelamentos arbitrários de serviços e contratos leoninos'
+      ]
+    },
+    {
+      id: 'imobiliario',
+      title: 'DIREITO IMOBILIÁRIO',
+      description: 'Auditoria jurídica para compra e venda segura (due diligence), usucapião, regularização fundiária e locações.',
+      scopeList: [
+        'Due diligence imobiliária completa antes da compra',
+        'Ações de usucapião judicial e extrajudicial em cartório',
+        'Regularização de registros, averbações e escrituras públicas',
+        'Elaboração de contratos de locação comercial e ações de despejo'
+      ]
+    },
+    {
+      id: 'medico',
+      title: 'DIREITO MÉDICO & SAÚDE',
+      description: 'Assessoria jurídica para profissionais da saúde, clínicas e pacientes na defesa de direitos fundamentais.',
+      scopeList: [
+        'Defesa ética profissional perante conselhos de classe (CRM / CRO)',
+        'Elaboração de Termos de Consentimento Livre e Esclarecido (TCLE)',
+        'Ações para obtenção judicial de medicamentos de alto custo',
+        'Reajustes abusivos e carências ilegais em convênios médicos'
+      ]
+    }
+  ];
 
-  const handleWhatsAppForArea = (area: PracticeArea) => {
-    const text = `Olá, Bazela & Freitas Advogados! Estou com dúvidas sobre *${area.title}* (${area.cltArticle || 'Direito Trabalhista'}). Podem analisar minha situação?`;
+  const handleWhatsAppForArea = (area: ExtendedArea) => {
+    const text = `Olá! Gostaria de consultar um advogado da Bazela & Freitas sobre *${area.title}*.`;
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
-    <section className="py-16 lg:py-24 bg-[#F8F9FA] text-[#2C3E50] border-b border-[#E5E7EB]" id="areas-de-atuacao">
+    <section 
+      id="areas-de-atuacao" 
+      className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200 transition-colors"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header with Geometric Balance Styling */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#C5A059]" />
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-[#1A2B45]">
-              Especialidades em Direito do Trabalho
-            </span>
+        {/* Section Layout matching Brancaleão & Marigo */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          
+          {/* Section Heading Title on Left (or Top on mobile) */}
+          <div className="lg:col-span-3 space-y-4 pt-2">
+            <h2 
+              className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-slate-900 tracking-tight leading-tight"
+              style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+            >
+              Áreas de Atuação
+            </h2>
+            <div className="w-12 h-0.5 bg-[#30437e]" />
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+              Atuação jurídica multidisciplinar, preventiva e contenciosa, orientada por sólidos princípios éticos e rigor técnico.
+            </p>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#1A2B45] tracking-tight font-brand" style={{ fontFamily: "'Cinzel', serif" }}>
-            Causas Trabalhistas que Patrocinamos em Santana
-          </h2>
-
-          <p className="text-base text-slate-600 leading-relaxed font-sans">
-            Conheça as principais causas que atuamos na Justiça do Trabalho. Identifique sua situação e fale diretamente com nossos advogados especialistas para resguardar seus direitos e prazos.
-          </p>
-
-          {/* Quick Search Input */}
-          <div className="pt-2 max-w-md mx-auto">
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Buscar por direito (ex: FGTS, horas extras, justa causa...)"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-sm border border-[#E5E7EB] bg-white text-xs sm:text-sm text-slate-800 focus:border-[#1A2B45] focus:outline-none shadow-xs"
-                aria-label="Pesquisar especialidade trabalhista"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold uppercase"
+          {/* Cards Grid (4 columns or 3 columns with Balance Icon like pp-info-box-top) */}
+          <div className="lg:col-span-9">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              {areasList.map((area) => (
+                <div
+                  key={area.id}
+                  onClick={() => setSelectedArea(area)}
+                  id={`area-card-${area.id}`}
+                  className="bg-white rounded-xs border border-slate-200 p-6 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col items-center text-center cursor-pointer group hover:-translate-y-1"
                 >
-                  Limpar
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Practice Cards Grid with Geometric Framing */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
-          {filteredAreas.map((area) => {
-            const IconComponent = ICON_MAP[area.iconName] || Scale;
-            return (
-              <div
-                key={area.id}
-                id={`card-${area.id}`}
-                className="bg-white rounded-xs p-6 border-t-4 border-t-[#1A2B45] border-x border-b border-[#E5E7EB] shadow-xs hover:border-t-[#C5A059] transition-all duration-200 flex flex-col justify-between group"
-              >
-                <div className="space-y-4">
-                  {/* Icon & CLT Badge */}
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 bg-[#1A2B45] text-[#C5A059] flex items-center justify-center rounded-xs shadow-xs">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    {area.cltArticle && (
-                      <span className="text-[10px] font-bold text-[#1A2B45] bg-[#F8F9FA] border border-[#E5E7EB] px-2.5 py-1 uppercase tracking-wider">
-                        {area.cltArticle}
-                      </span>
-                    )}
+                  {/* Balance Scale Icon (Exact replica of icon-balance from Brancaleão & Marigo) */}
+                  <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-[#c5a059] group-hover:text-[#30437e] group-hover:border-[#30437e]/30 transition-colors mb-4">
+                    <Scale className="w-7 h-7 stroke-[1.5]" />
                   </div>
 
-                  {/* Card Title */}
-                  <h3 className="text-lg font-bold text-[#1A2B45] font-brand leading-snug group-hover:text-[#C5A059] transition-colors">
+                  {/* Title (All caps, bold, Cinzel serif font) */}
+                  <h3 
+                    className="font-serif font-bold text-sm sm:text-base text-slate-900 tracking-wider mb-2 group-hover:text-[#30437e] transition-colors"
+                    style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+                  >
                     {area.title}
                   </h3>
 
-                  {/* Short Description */}
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {area.shortDesc}
-                  </p>
-
-                  {/* Common Signs Preview */}
-                  <div className="pt-2 border-t border-[#E5E7EB] space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
-                      Sinais comuns:
-                    </span>
-                    {area.commonSigns.slice(0, 2).map((sign, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059] flex-shrink-0 mt-0.5" />
-                        <span>{sign}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {/* Subtle hover prompt */}
+                  <span className="text-[11px] font-medium text-slate-400 group-hover:text-slate-600 transition-colors flex items-center gap-1 mt-auto pt-2">
+                    Saiba mais <ArrowRight className="w-3 h-3" />
+                  </span>
                 </div>
-
-                {/* Card Actions */}
-                <div className="pt-6 mt-4 border-t border-[#E5E7EB] flex flex-col gap-2">
-                  <button
-                    onClick={() => handleWhatsAppForArea(area)}
-                    className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20be5a] text-white font-bold text-xs uppercase py-2.5 px-4 rounded-sm shadow-xs transition-colors cursor-pointer"
-                  >
-                    <MessageCircle className="w-4 h-4 fill-current" />
-                    <span>Avaliar via WhatsApp</span>
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedArea(area)}
-                    className="w-full flex items-center justify-center gap-1.5 text-slate-600 hover:text-[#1A2B45] font-bold text-xs uppercase py-1.5 transition-colors cursor-pointer"
-                  >
-                    <span>Ver direitos recuperáveis</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {filteredAreas.length === 0 && (
-          <div className="text-center py-12 text-slate-500">
-            <p>Nenhuma especialidade encontrada para "{searchTerm}".</p>
-            <button
-              onClick={() => setSearchTerm('')}
-              className="mt-2 text-xs text-[#1A2B45] font-bold uppercase underline"
-            >
-              Ver todas as áreas
-            </button>
+              ))}
+            </div>
           </div>
-        )}
+
+        </div>
 
       </div>
 
-      {/* Modal / Detailed Drawer for Full Practice Area Breakdown */}
+      {/* Modal for Area Details */}
       {selectedArea && (
-        <div
-          className="fixed inset-0 z-50 bg-[#0F172A]/80 backdrop-blur-xs flex items-center justify-center p-4"
-          onClick={() => setSelectedArea(null)}
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="modal-title"
         >
-          <div
-            className="bg-white rounded-xs max-w-2xl w-full p-6 sm:p-8 shadow-2xl border-2 border-[#1A2B45] max-h-[90vh] overflow-y-auto space-y-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between border-b-2 border-[#1A2B45] pb-4">
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest block">
-                  {selectedArea.cltArticle || 'Direito do Trabalho'}
-                </span>
-                <h3 id="modal-title" className="text-2xl font-bold text-[#1A2B45] font-brand">
-                  {selectedArea.title}
-                </h3>
+          <div className="bg-white rounded-xs border border-slate-300 shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-5">
+            
+            <div className="flex items-start justify-between border-b border-slate-200 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-[#c5a059]">
+                  <Scale className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">
+                    Área de Atuação
+                  </span>
+                  <h3 className="text-xl font-serif font-bold text-slate-900" style={{ fontFamily: "'Cinzel', Georgia, serif" }}>
+                    {selectedArea.title}
+                  </h3>
+                </div>
               </div>
+
               <button
                 onClick={() => setSelectedArea(null)}
-                className="p-1 text-slate-400 hover:text-[#1A2B45] font-bold text-lg"
-                aria-label="Fechar janela"
+                className="p-1 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+                aria-label="Fechar"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
-              <p className="text-sm sm:text-base font-medium text-[#1A2B45]">
-                {selectedArea.fullDesc}
-              </p>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              {selectedArea.description}
+            </p>
 
-              {/* Signs / Red flags */}
-              <div className="bg-[#F8F9FA] border-l-4 border-[#C5A059] border-y border-r border-[#E5E7EB] p-4 space-y-2">
-                <h4 className="font-bold text-[#1A2B45] text-xs uppercase tracking-wider flex items-center gap-1.5">
-                  <ShieldAlert className="w-4 h-4 text-[#C5A059]" />
-                  Sinais de que você pode acionar a Justiça do Trabalho:
-                </h4>
-                <ul className="space-y-1.5">
-                  {selectedArea.commonSigns.map((sign, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                      <span className="text-[#C5A059] font-bold">•</span>
-                      <span>{sign}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Recoverable Rights */}
-              <div className="bg-[#F8F9FA] border-l-4 border-[#1A2B45] border-y border-r border-[#E5E7EB] p-4 space-y-2">
-                <h4 className="font-bold text-[#1A2B45] text-xs uppercase tracking-wider flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  Direitos e Verbas que podemos recuperar para você:
-                </h4>
-                <ul className="space-y-1.5">
-                  {selectedArea.rightsRecoverable.map((right, i) => (
-                    <li key={i} className="flex items-start gap-2 text-xs text-slate-800">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                      <span className="font-medium">{right}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="space-y-2 pt-2">
+              <span className="text-xs font-serif font-bold text-slate-800 uppercase tracking-wider block">
+                Principais demandas e serviços:
+              </span>
+              <div className="space-y-2">
+                {selectedArea.scopeList.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Modal Bottom WhatsApp CTA */}
-            <div className="pt-2 border-t border-[#E5E7EB] flex flex-col sm:flex-row gap-3">
+            <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-slate-500">
+                Atendimento presencial em Santana ou 100% online
+              </span>
+
               <button
                 onClick={() => {
-                  handleWhatsAppForArea(selectedArea);
                   setSelectedArea(null);
+                  handleWhatsAppForArea(selectedArea);
                 }}
-                className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20be5a] text-white font-bold text-xs uppercase py-3.5 px-6 rounded-sm shadow-xs cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xs"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Conversar no WhatsApp sobre este tema</span>
-              </button>
-              <button
-                onClick={() => setSelectedArea(null)}
-                className="px-5 py-3 text-slate-600 hover:text-slate-900 font-bold text-xs uppercase border border-[#E5E7EB] rounded-sm hover:bg-[#F8F9FA]"
-              >
-                Fechar
+                <span>Consultar Advogado</span>
               </button>
             </div>
+
           </div>
         </div>
       )}

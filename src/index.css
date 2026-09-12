@@ -1,25 +1,31 @@
 @import "tailwindcss";
 
-@layer base {
-  body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #F8F9FA;
-    color: #2C3E50;
-  }
-
-  h1, h2, h3, .font-brand {
-    font-family: 'Cinzel', Georgia, Cambria, 'Times New Roman', serif;
-  }
+:root {
+  --theme-font-display: 'Cinzel', Georgia, serif;
+  --theme-font-body: 'Plus Jakarta Sans', sans-serif;
+  --theme-primary: #0F172A;
+  --theme-secondary: #1E293B;
+  --theme-accent: #C5A059;
+  --theme-accent-hover: #B38E46;
+  --theme-accent-light: #FDF8EE;
+  --theme-bg-page: #F8FAFC;
+  --theme-bg-surface: #FFFFFF;
+  --theme-text-main: #1E293B;
+  --theme-text-muted: #64748B;
+  --theme-border: #E2E8F0;
 }
 
-/* Geometric Balance Custom Palette Tokens */
-:root {
-  --color-navy-deep: #1A2B45;
-  --color-navy-dark: #0F172A;
-  --color-gold-accent: #C5A059;
-  --color-bg-light: #F8F9FA;
-  --color-text-main: #2C3E50;
-  --color-border-grid: #E5E7EB;
+@layer base {
+  body {
+    font-family: var(--theme-font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--theme-bg-page);
+    color: var(--theme-text-main);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  h1, h2, h3, .font-serif, .font-brand {
+    font-family: var(--theme-font-display), Georgia, serif;
+  }
 }
 
 /* Custom scrollbar */
@@ -30,16 +36,16 @@
   background: #0F172A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A2B45;
+  background: #1E293B;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A059;
+  background: var(--theme-accent);
 }
 
 /* Accessibility focus ring */
 :focus-visible {
-  outline: 2px solid #C5A059;
+  outline: 2px solid var(--theme-accent);
   outline-offset: 2px;
 }
 

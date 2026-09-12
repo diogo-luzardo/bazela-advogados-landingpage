@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { QuickStatsBar } from './components/QuickStatsBar';
+import { AboutSection } from './components/AboutSection';
 import { PracticeAreas } from './components/PracticeAreas';
-import { StrategicLocation } from './components/StrategicLocation';
-import { Partners } from './components/Partners';
-import { InteractiveTriage } from './components/InteractiveTriage';
-import { WhatsAppAutoFlowPreview } from './components/WhatsAppAutoFlowPreview';
-import { Testimonials } from './components/Testimonials';
-import { FAQSection } from './components/FAQSection';
+import { CallToActionBanner } from './components/CallToActionBanner';
+import { ArticlesSection } from './components/ArticlesSection';
 import { ContactFooter } from './components/ContactFooter';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { CookieConsentBar } from './components/CookieConsentBar';
+import { FloatingThemeSwitcher } from './components/FloatingThemeSwitcher';
 
 export default function App() {
   const [fontSizeLevel, setFontSizeLevel] = useState<number>(0);
@@ -25,62 +24,61 @@ export default function App() {
   }[fontSizeLevel] || 'text-[16px]';
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-200 ${fontSizeClasses} ${
-        highContrast ? 'bg-slate-950 text-amber-300 contrast-125' : 'bg-slate-50 text-slate-900'
-      }`}
-    >
-      {/* Accessibility Skip Link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-amber-400 focus:text-slate-950 focus:px-4 focus:py-2 focus:rounded-md focus:font-bold"
+    <ThemeProvider>
+      <div
+        className={`min-h-screen transition-colors duration-200 ${fontSizeClasses} ${
+          highContrast ? 'bg-slate-950 text-amber-300 contrast-125' : 'bg-white text-slate-800'
+        }`}
+        style={{
+          fontFamily: "'Plus Jakarta Sans', sans-serif"
+        }}
       >
-        Pular para o conteúdo principal
-      </a>
+        {/* Accessibility Skip Link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-amber-400 focus:text-slate-950 focus:px-4 focus:py-2 focus:rounded-md focus:font-bold"
+        >
+          Pular para o conteúdo principal
+        </a>
 
-      {/* Main Header & Navbar */}
-      <Header
-        fontSizeLevel={fontSizeLevel}
-        setFontSizeLevel={setFontSizeLevel}
-        highContrast={highContrast}
-        setHighContrast={setHighContrast}
-      />
+        {/* 1. Topbar & Header Navbar (Directly styled after Brancaleão & Marigo) */}
+        <Header
+          fontSizeLevel={fontSizeLevel}
+          setFontSizeLevel={setFontSizeLevel}
+          highContrast={highContrast}
+          setHighContrast={setHighContrast}
+        />
 
-      {/* Main Content Sections */}
-      <main id="main-content">
-        {/* Hero Section */}
-        <Hero />
+        {/* Main Content Sections (Clean, Multidisciplinary, True to Reference) */}
+        <main id="main-content">
+          {/* 2. Hero Section (Sina Slider banner with Lady Justice & Quotes) */}
+          <Hero />
 
-        {/* Quick Numbers / Trust Bar */}
-        <QuickStatsBar />
+          {/* 3. Bem vindo / O Escritório (50/50 Layout: Lawyer photo + Consulte-nos box & Text + Saiba mais) */}
+          <AboutSection />
 
-        {/* Practice Areas / Direitos do Trabalhador */}
-        <PracticeAreas />
+          {/* 4. Áreas de Atuação (Balance Scale Icons Grid: Trabalhista, Família, Empresarial, Cível, etc.) */}
+          <PracticeAreas />
 
-        {/* Strategic Location Santana & Zona Norte */}
-        <StrategicLocation />
+          {/* 5. Split CTA Banner: "Precisa de um advogado?" (50% dark image, 50% navy blue) */}
+          <CallToActionBanner />
 
-        {/* Interactive Labor Rights Simulator & WhatsApp Triage */}
-        <InteractiveTriage />
+          {/* 6. Artigos (Pyramid divider, 3 articles grid, read modals) */}
+          <ArticlesSection />
+        </main>
 
-        {/* Partners / Sócios Fundadores */}
-        <Partners />
+        {/* 7. 4-Column Footer & Copyright Bar */}
+        <ContactFooter />
 
-        {/* WhatsApp Automated Response Flow Architecture */}
-        <WhatsAppAutoFlowPreview />
+        {/* 8. JoinChat Floating WhatsApp Widget */}
+        <FloatingWhatsApp />
 
-        {/* Client Testimonials / Avaliações Google 5 Estrelas */}
-        <Testimonials />
+        {/* 9. Cookie Consent Bar (LGPD) */}
+        <CookieConsentBar />
 
-        {/* Searchable Google-Researched FAQ */}
-        <FAQSection />
-      </main>
-
-      {/* Rich Footer with Location, Map, and SEO Directory */}
-      <ContactFooter />
-
-      {/* Sticky Floating WhatsApp Widget */}
-      <FloatingWhatsApp />
-    </div>
+        {/* 10. Floating Theme Switcher (Allows client to test 5 distinct visual styles) */}
+        <FloatingThemeSwitcher />
+      </div>
+    </ThemeProvider>
   );
 }

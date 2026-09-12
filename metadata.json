@@ -1,6 +1,6 @@
 {
-  "name": "Bazela & Freitas Advogados | Advocacia Trabalhista Santana SP",
-  "description": "Landing page de alta conversão para o escritório Bazela & Freitas Advogados, especializado em Direito do Trabalho em Santana, Zona Norte de São Paulo. Atendimento ao trabalhador, localização estratégica ao lado do Metrô Santana, simulação de direitos e triagem WhatsApp.",
+  "name": "Bazela & Freitas Advogados Associados | Santana SP",
+  "description": "Escritório de advocacia multidisciplinar em Santana, São Paulo. Atuação nas áreas de Direito Civil, Família e Sucessões, Empresarial, Imobiliário, Trabalhista e Previdenciário com atendimento personalizado e excelência jurídica.",
   "requestFramePermissions": ["geolocation"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

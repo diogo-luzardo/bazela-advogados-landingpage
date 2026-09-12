@@ -1,94 +1,107 @@
 import React from 'react';
-import { OFFICE_INFO } from '../data/lawFirmData';
+import { OFFICE_INFO } from '../data/firmData';
+import { useTheme } from '../context/ThemeContext';
 import { 
   MapPin, 
   Train, 
-  Bus, 
   Car, 
-  Accessibility, 
-  Navigation, 
   Clock, 
   Phone, 
-  MessageCircle, 
-  ShieldCheck,
-  Building2
+  CalendarCheck,
+  Navigation,
+  Building2,
+  ShieldCheck
 } from 'lucide-react';
 
 export const StrategicLocation: React.FC = () => {
+  const { currentTheme } = useTheme();
+
   const googleMapsRouteUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-    'Avenida Nova Cantareira, 2213, Conjunto 72, Tucuruvi, São Paulo - SP, CEP 02331-003'
+    'Rua Voluntários da Pátria, 2816, Santana, São Paulo - SP'
   )}`;
 
   const wazeRouteUrl = `https://waze.com/ul?q=${encodeURIComponent(
-    'Avenida Nova Cantareira, 2213, Tucuruvi, São Paulo'
+    'Rua Voluntários da Pátria, 2816, Santana, São Paulo'
   )}`;
 
   const handleWhatsAppConsult = () => {
-    const text = 'Olá! Gostaria de agendar um atendimento presencial no escritório do Tucuruvi (Av. Nova Cantareira).';
+    const text = 'Olá! Gostaria de agendar uma consulta presencial no escritório de Santana (próximo ao Metrô).';
     window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
-  const nearbyNeighborhoods = [
-    'Tucuruvi',
-    'Santana',
-    'Parada Inglesa',
-    'Jardim São Paulo',
-    'Tremembé',
-    'Jaçanã',
-    'Vila Mazzei',
-    'Vila Guilherme',
-    'Casa Verde',
-    'Mandaqui',
-    'Vila Maria',
-    'Imirim',
-    'Lauzane Paulista',
-    'Limão',
-    'Carandiru',
-    'Água Fria'
-  ];
-
   return (
-    <section className="py-16 lg:py-24 bg-white text-[#2C3E50] border-b border-[#E5E7EB]" id="localizacao">
+    <section 
+      className="py-16 lg:py-24 border-b transition-colors"
+      style={{ 
+        backgroundColor: currentTheme.bgPage,
+        borderColor: currentTheme.border
+      }} 
+      id="localizacao"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
           <div className="inline-flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#C5A059]" />
-            <span className="text-xs font-black uppercase tracking-[0.2em] text-[#1A2B45]">
-              Acesso Rápido e Centralizado • Zona Norte SP
+            <span className="w-2 h-2 rounded-full" style={{ backgroundColor: currentTheme.accent }} />
+            <span 
+              className="text-xs font-bold uppercase tracking-[0.2em]"
+              style={{ color: currentTheme.accent }}
+            >
+              Localização Estratégica
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#1A2B45] tracking-tight font-brand" style={{ fontFamily: "'Cinzel', serif" }}>
-            Av. Nova Cantareira, 2213 - Tucuruvi
+          <h2 
+            className="text-3xl sm:text-4xl font-serif font-bold text-slate-900 tracking-tight"
+            style={{ fontFamily: currentTheme.fontDisplay }}
+          >
+            Sede Corporativa em Santana
           </h2>
 
+          <div 
+            className="w-16 h-0.5 mx-auto"
+            style={{ backgroundColor: currentTheme.accent }}
+          />
+
           <p className="text-base text-slate-600 leading-relaxed font-sans">
-            Sabemos que o trabalhador tem rotina corrida. Por isso, nosso escritório está situado em localização estratégica no <strong className="text-[#1A2B45] font-semibold">Tucuruvi</strong>, na <strong className="text-[#1A2B45] font-semibold">Avenida Nova Cantareira, 2213 (Conjunto 72)</strong>, com fácil acesso ao Metrô Tucuruvi / Parada Inglesa, total acessibilidade e conforto.
+            Instalações confortáveis e privativas a apenas 180 metros do Metrô Santana, com estacionamento no local e infraestrutura completa para receber você e sua empresa.
           </p>
         </div>
 
-        {/* Location Content Grid with Geometric Balance Structure */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-12 items-stretch">
+        {/* Location Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
-          {/* Left Column: Proximity & Accessibility Details */}
+          {/* Details Card */}
           <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
-            
-            {/* Main Address Card with Geometric Left-Border */}
-            <div className="bg-[#F8F9FA] border-l-4 border-[#1A2B45] border-y border-r border-[#E5E7EB] rounded-xs p-6 sm:p-7 shadow-xs space-y-5">
+            <div 
+              className="rounded-sm p-7 sm:p-8 border shadow-2xs space-y-6"
+              style={{ 
+                backgroundColor: currentTheme.bgSurface,
+                borderColor: currentTheme.border
+              }}
+            >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xs bg-[#1A2B45] text-[#C5A059] flex items-center justify-center flex-shrink-0 shadow-xs">
-                  <Building2 className="w-5 h-5" />
+                <div 
+                  className="w-12 h-12 rounded-xs flex items-center justify-center flex-shrink-0"
+                  style={{ 
+                    backgroundColor: currentTheme.accentLight,
+                    color: currentTheme.accent
+                  }}
+                >
+                  <Building2 className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest block">
-                    Escritório Tucuruvi • Zona Norte
+                  <span className="text-xs font-bold uppercase tracking-widest block" style={{ color: currentTheme.accent }}>
+                    Edifício Santana Corporate
                   </span>
-                  <h3 className="text-lg font-bold text-[#1A2B45] font-brand">
+                  <h3 
+                    className="text-xl font-bold font-serif text-slate-900"
+                    style={{ fontFamily: currentTheme.fontDisplay }}
+                  >
                     {OFFICE_INFO.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-700 font-medium">
+                  <p className="text-sm text-slate-700 font-medium pt-1">
                     {OFFICE_INFO.address}, {OFFICE_INFO.complement}
                   </p>
                   <p className="text-xs text-slate-500">
@@ -97,148 +110,97 @@ export const StrategicLocation: React.FC = () => {
                 </div>
               </div>
 
-              {/* Distances and Transports */}
+              {/* Transportation Highlights */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="flex items-start gap-2.5 p-3 rounded-xs bg-white border border-[#E5E7EB]">
-                  <Train className="w-4 h-4 text-[#1A2B45] flex-shrink-0 mt-0.5" />
+                <div 
+                  className="flex items-start gap-3 p-3.5 rounded border"
+                  style={{ 
+                    backgroundColor: currentTheme.bgPage,
+                    borderColor: currentTheme.border
+                  }}
+                >
+                  <Train className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: currentTheme.accent }} />
                   <div>
-                    <span className="text-xs font-bold text-[#1A2B45] block">Metrô Linha 1-Azul</span>
-                    <span className="text-[11px] text-slate-600">Estações Tucuruvi e Parada Inglesa</span>
+                    <strong className="text-xs text-slate-900 block">Metrô Santana (Linha 1-Azul)</strong>
+                    <span className="text-[11px] text-slate-500">180 metros (2 min a pé)</span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-2.5 p-3 rounded-xs bg-white border border-[#E5E7EB]">
-                  <Bus className="w-4 h-4 text-[#1A2B45] flex-shrink-0 mt-0.5" />
+                <div 
+                  className="flex items-start gap-3 p-3.5 rounded border"
+                  style={{ 
+                    backgroundColor: currentTheme.bgPage,
+                    borderColor: currentTheme.border
+                  }}
+                >
+                  <Car className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: currentTheme.accent }} />
                   <div>
-                    <span className="text-xs font-bold text-[#1A2B45] block">Terminal Ônibus Tucuruvi</span>
-                    <span className="text-[11px] text-slate-600">Linhas para toda a Zona Norte</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xs bg-white border border-[#E5E7EB]">
-                  <Car className="w-4 h-4 text-[#1A2B45] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-xs font-bold text-[#1A2B45] block">Vias de Acesso Fáceis</span>
-                    <span className="text-[11px] text-slate-600">Av. Nova Cantareira, Mazzei e Tucuruvi</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xs bg-white border border-[#E5E7EB]">
-                  <Accessibility className="w-4 h-4 text-[#1A2B45] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <span className="text-xs font-bold text-[#1A2B45] block">Total Acessibilidade</span>
-                    <span className="text-[11px] text-slate-600">Elevadores e estrutura adaptada</span>
+                    <strong className="text-xs text-slate-900 block">Estacionamento &amp; Acesso</strong>
+                    <span className="text-[11px] text-slate-500">Av. Cruzeiro do Sul e Braz Leme</span>
                   </div>
                 </div>
               </div>
 
-              {/* Working Hours & Contact */}
-              <div className="border-t border-[#E5E7EB] pt-4 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-700">
+              {/* Operating Info */}
+              <div className="border-t pt-4 space-y-2 text-xs text-slate-600" style={{ borderColor: currentTheme.border }}>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3.5 h-3.5 text-slate-500" />
-                  <span><strong>Horário:</strong> Seg a Sex das 08h30 às 18h30</span>
+                  <Clock className="w-4 h-4 text-slate-400" />
+                  <span><strong>Atendimento:</strong> Segunda a Sexta, das 09h às 18h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Salas de Atendimento Privativas</span>
+                  <Phone className="w-4 h-4 text-slate-400" />
+                  <span><strong>Telefone:</strong> {OFFICE_INFO.phone} • <strong>WhatsApp:</strong> {OFFICE_INFO.whatsapp}</span>
                 </div>
               </div>
 
-              {/* Navigation Action Buttons with Geometric Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+              {/* Action Buttons */}
+              <div className="pt-2 flex flex-wrap gap-3">
                 <a
                   href={googleMapsRouteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 bg-[#1A2B45] hover:bg-[#0F172A] text-white font-bold text-xs uppercase py-3 px-4 rounded-sm shadow-xs transition-colors text-center"
+                  className="flex-1 min-w-[140px] text-center py-2.5 px-3 rounded-sm border text-xs font-bold uppercase tracking-wider text-slate-700 hover:bg-black/5 transition-colors flex items-center justify-center gap-1.5"
+                  style={{ borderColor: currentTheme.border }}
                 >
-                  <Navigation className="w-4 h-4 text-[#C5A059]" />
-                  <span>Traçar Rota no Maps</span>
-                </a>
-
-                <a
-                  href={wazeRouteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-[#F8F9FA] hover:bg-slate-200 text-[#1A2B45] border border-[#E5E7EB] font-bold text-xs uppercase py-3 px-4 rounded-sm shadow-xs transition-colors text-center"
-                >
-                  <span>Abrir no Waze</span>
+                  <Navigation className="w-3.5 h-3.5 text-blue-600" />
+                  <span>Como Chegar (Maps)</span>
                 </a>
 
                 <button
                   onClick={handleWhatsAppConsult}
-                  className="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20be5a] text-white font-bold text-xs uppercase py-3 px-4 rounded-sm shadow-xs transition-colors cursor-pointer"
+                  className="flex-1 min-w-[140px] text-center py-2.5 px-3 rounded-sm text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs hover:opacity-95"
+                  style={{ backgroundColor: currentTheme.primary }}
                 >
-                  <MessageCircle className="w-4 h-4 fill-current" />
-                  <span>Agendar no WhatsApp</span>
+                  <CalendarCheck className="w-3.5 h-3.5" style={{ color: currentTheme.accent }} />
+                  <span>Agendar Horário</span>
                 </button>
               </div>
 
             </div>
-
-            {/* Neighborhoods Served in Zona Norte for SEO */}
-            <div className="bg-[#F8F9FA] border border-[#E5E7EB] rounded-xs p-4 space-y-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#1A2B45] block">
-                Atendimento rápido para moradores e trabalhadores de:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {nearbyNeighborhoods.map((bairro, idx) => (
-                  <span
-                    key={idx}
-                    className="inline-block text-[11px] font-medium bg-white text-slate-700 px-2.5 py-1 rounded-xs border border-[#E5E7EB]"
-                  >
-                    {bairro}
-                  </span>
-                ))}
-              </div>
-            </div>
-
           </div>
 
-          {/* Right Column: Google Maps Interactive Embed & Arrival Guide */}
-          <div className="lg:col-span-6 flex flex-col space-y-4">
-            <div className="bg-white rounded-xs overflow-hidden border-2 border-[#1A2B45] shadow-xs flex-1 min-h-[360px] relative flex flex-col">
-              {/* Header on top of map */}
-              <div className="bg-[#1A2B45] text-white px-4 py-2.5 flex items-center justify-between text-xs">
-                <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-[11px]">
-                  <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
-                  <span>Tucuruvi, São Paulo - SP</span>
-                </div>
-                <span className="text-[#C5A059] font-bold text-[10px] uppercase tracking-widest">
-                  Zona Norte SP
-                </span>
-              </div>
-
+          {/* Right Column: Google Maps Embed Frame */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
+            <div 
+              className="w-full h-full min-h-[320px] rounded-sm border shadow-2xs overflow-hidden"
+              style={{ borderColor: currentTheme.border }}
+            >
               <iframe
-                title="Mapa de Localização Bazela & Freitas - Tucuruvi"
                 src={OFFICE_INFO.googleMapsEmbedUrl}
-                className="w-full flex-1 min-h-[380px] border-0"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '340px' }}
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa de Localização Bazela & Freitas Advogados Santana"
+                className="w-full h-full"
               />
-              
-              {/* Bottom Quick Bar */}
-              <div className="p-3 bg-[#F8F9FA] border-t border-[#E5E7EB] flex items-center justify-between text-xs text-slate-700">
-                <span className="font-semibold text-[#1A2B45]">
-                  📍 Av. Nova Cantareira, 2213 - Cj 72 - Tucuruvi, SP
-                </span>
-                <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[10px]">
-                  CEP 02331-003
-                </span>
-              </div>
-            </div>
-
-            {/* Quick transport directions summary with Geometric Left-Border */}
-            <div className="p-4 bg-[#F8F9FA] border-l-4 border-[#C5A059] border-y border-r border-[#E5E7EB] rounded-xs flex items-center justify-between text-xs text-[#1A2B45]">
-              <div className="flex items-center gap-2">
-                <Train className="w-4 h-4 text-[#1A2B45] flex-shrink-0" />
-                <span>Localizado na <strong>Avenida Nova Cantareira, 2213</strong> (Conjunto 72), fácil acesso pelo Metrô Tucuruvi e Parada Inglesa.</span>
-              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
   );

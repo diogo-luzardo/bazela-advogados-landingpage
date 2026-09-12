@@ -1,178 +1,186 @@
-import React from 'react';
-import { OFFICE_INFO } from '../data/lawFirmData';
-import { 
-  MessageCircle, 
-  MapPin, 
-  ShieldCheck, 
-  Scale, 
-  Clock, 
-  CheckCircle2, 
-  Star, 
-  ArrowRight,
-  TrendingUp
-} from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { OFFICE_INFO } from '../data/firmData';
+import { useTheme } from '../context/ThemeContext';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+interface Slide {
+  id: number;
+  title: string;
+  subtitle?: string;
+  buttonText: string;
+  buttonHref: string;
+  bgImage: string;
+}
 
 export const Hero: React.FC = () => {
-  const handleWhatsAppConsult = (subject?: string) => {
-    const text = subject
-      ? `Olá, Bazela & Freitas Advogados. Gostaria de tirar dúvidas sobre ${subject}. Podem me orientar?`
-      : 'Olá, Bazela & Freitas Advogados! Preciso de orientação com um advogado especialista em Direito do Trabalho no Tucuruvi.';
-    window.open(`https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent(text)}`, '_blank');
+  const { currentTheme } = useTheme();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const slides: Slide[] = [
+    {
+      id: 1,
+      title: '“Nós somos o que fazemos repetidamente; por isso, a excelência é um hábito, não uma atitude”',
+      subtitle: 'Aristóteles',
+      buttonText: 'Saiba mais',
+      buttonHref: '#o-escritorio',
+      bgImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=80' // Lady Justice statue
+    },
+    {
+      id: 2,
+      title: 'Um bom advogado não vê apenas facilidades e resultados. Todo processo traz riscos que precisam ser esclarecidos ao cliente.',
+      subtitle: 'Compromisso com a Verdade & Ética',
+      buttonText: 'Entre em contato',
+      buttonHref: '#contato',
+      bgImage: 'https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?auto=format&fit=crop&w=1920&q=80' // Classical scales of justice
+    },
+    {
+      id: 3,
+      title: '“A verdadeira advocacia é aquela que combina preparo técnico irrestrito com sensibilidade humana e lealdade a cada causa.”',
+      subtitle: 'Bazela & Freitas Advogados Associados',
+      buttonText: 'Consulte-nos',
+      buttonHref: `https://wa.me/${OFFICE_INFO.whatsappRaw}?text=${encodeURIComponent('Olá! Gostaria de agendar uma consulta jurídica com o escritório Bazela & Freitas Advogados Associados.')}`,
+      bgImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80' // Prestigious architecture
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    timerRef.current = setInterval(() => {
+      nextSlide();
+    }, 7000); // 7s delay just like Sina Slider in reference HTML
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [currentSlide, isPaused]);
+
   return (
-    <section className="relative overflow-hidden bg-white text-[#2C3E50] border-b-2 border-[#1A2B45]" id="hero-section">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-          
-          {/* Main Copy & Lead Capture */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 text-left pr-0 lg:pr-6 border-b lg:border-b-0 lg:border-r border-[#E5E7EB] pb-8 lg:pb-0">
+    <section 
+      id="inicio"
+      className="relative w-full overflow-hidden select-none bg-slate-950"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      style={{ minHeight: '560px', height: '70vh', maxHeight: '720px' }}
+    >
+      {/* Slides */}
+      {slides.map((slide, index) => {
+        const isActive = index === currentSlide;
+        return (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+            }`}
+          >
+            {/* Background Image with Deep Classical Navy/Dark Blue Overlay */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-7000 ease-out"
+              style={{ 
+                backgroundImage: `url(${slide.bgImage})`,
+                transform: isActive ? 'scale(1.04)' : 'scale(1)'
+              }}
+            />
             
-            {/* Top Local SEO & Credibility Badge */}
-            <div className="inline-flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#C5A059]" />
-              <span className="text-[#C5A059] font-bold text-xs sm:text-sm uppercase tracking-widest">
-                Especialistas em causas trabalhistas • Tucuruvi - Zona Norte SP
-              </span>
-            </div>
+            {/* Dark Blue Overlay with gradient and subtle texture */}
+            <div 
+              className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-950/70"
+            />
+            
+            {/* Subtle radial glow in the center for depth */}
+            <div className="absolute inset-0 bg-radial-at-c from-[#30437e]/20 via-transparent to-black/60" />
 
-            {/* Main Headline with Geometric Balance Styling */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#1A2B45] leading-[1.15] tracking-tight font-brand" style={{ fontFamily: "'Cinzel', serif" }}>
-              Protegemos os seus direitos no <span className="border-b-4 border-[#C5A059] pb-0.5">trabalho</span>.
-            </h1>
-
-            {/* Subheading focusing on worker rights protection */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-sans max-w-xl">
-              Localização estratégica na Av. Nova Cantareira, 2213 (Tucuruvi). Atuação especializada e célere em <strong className="text-[#1A2B45] font-semibold">Rescisão Indireta</strong>, <strong className="text-[#1A2B45] font-semibold">Horas Extras</strong>, <strong className="text-[#1A2B45] font-semibold">Fraude de PJ/MEI</strong> e <strong className="text-[#1A2B45] font-semibold">Verbas Rescisórias</strong>.
-            </p>
-
-            {/* Geometric Experience Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-              <div className="border-l-4 border-[#1A2B45] pl-3 py-1">
-                <span className="block text-2xl font-bold text-[#1A2B45] font-brand">+15 anos</span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Tradição Jurídica</span>
-              </div>
-              <div className="border-l-4 border-[#C5A059] pl-3 py-1">
-                <span className="block text-2xl font-bold text-[#1A2B45] font-brand">+2.800</span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Causas Conduzidas</span>
-              </div>
-              <div className="border-l-4 border-[#1A2B45] pl-3 py-1 col-span-2 sm:col-span-1">
-                <span className="block text-2xl font-bold text-[#1A2B45] font-brand">Tucuruvi</span>
-                <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">Zona Norte SP</span>
-              </div>
-            </div>
-
-            {/* Primary Action Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-              <button
-                onClick={() => handleWhatsAppConsult()}
-                id="hero-primary-cta"
-                className="bg-[#25D366] hover:bg-[#20be5a] text-white font-bold text-xs sm:text-sm px-6 py-4 rounded-sm shadow-sm flex items-center justify-center gap-2 uppercase tracking-wider transition-all duration-150 cursor-pointer"
+            {/* Slide Content (Centered/Left aligned like Brancaleão & Marigo) */}
+            <div className="relative h-full max-w-5xl mx-auto px-6 sm:px-12 flex flex-col justify-center items-center text-center">
+              
+              {/* Quote / Main Headline */}
+              <h1 
+                className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-snug sm:leading-tight font-medium max-w-4xl tracking-tight transition-all duration-700 delay-100 ${
+                  isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
+                style={{ fontFamily: "'Cinzel', Georgia, serif" }}
               >
-                <MessageCircle className="w-4 h-4 fill-current" />
-                <span>Consultar Advogado no WhatsApp</span>
-              </button>
+                {slide.title}
+              </h1>
 
-              <a
-                href="#simulador-direitos"
-                id="hero-secondary-cta"
-                className="bg-[#1A2B45] hover:bg-[#0F172A] text-white font-bold text-xs sm:text-sm px-6 py-4 rounded-sm shadow-sm flex items-center justify-center gap-2 uppercase tracking-wider transition-all duration-150 text-center"
+              {/* Subtitle / Author */}
+              {slide.subtitle && (
+                <h2 
+                  className={`mt-4 sm:mt-6 text-base sm:text-lg text-slate-300 font-serif italic tracking-wider transition-all duration-700 delay-200 ${
+                    isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                  }`}
+                  style={{ fontFamily: "'Cinzel', Georgia, serif" }}
+                >
+                  {slide.subtitle}
+                </h2>
+              )}
+
+              {/* Action Button (Styled after the Sina button: border, dark, pulse) */}
+              <div 
+                className={`mt-8 sm:mt-10 transition-all duration-700 delay-300 ${
+                  isActive ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               >
-                <TrendingUp className="w-4 h-4 text-[#C5A059]" />
-                <span>Simular Meus Direitos</span>
-              </a>
-            </div>
-
-            {/* Trust Rating Banner */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 text-xs text-slate-600">
-              <div className="flex items-center gap-1 text-amber-500">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                ))}
-              </div>
-              <span className="font-bold text-[#1A2B45]">4.9 / 5.0</span>
-              <span className="text-slate-500">Avaliações no Google Meu Negócio (+180 trabalhadores atendidos)</span>
-            </div>
-
-          </div>
-
-          {/* Right Column: Geometric Fast Triage Card */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <div className="bg-[#F8F9FA] rounded-sm p-6 sm:p-7 border border-[#E5E7EB] shadow-sm space-y-5">
-              <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-3">
-                <div className="flex items-center gap-2 text-[#1A2B45] text-xs font-black uppercase tracking-[0.2em]">
-                  <span className="w-2 h-2 bg-[#C5A059]" />
-                  <span>Análise de Caso Preliminar</span>
-                </div>
-                <span className="text-[10px] uppercase font-bold text-[#C5A059] tracking-widest bg-white px-2 py-0.5 border border-[#E5E7EB]">
-                  Plantão Tucuruvi
-                </span>
-              </div>
-
-              <h2 className="text-lg sm:text-xl font-bold text-[#1A2B45] font-brand leading-snug" style={{ fontFamily: "'Cinzel', serif" }}>
-                Qual situação você deseja resolver?
-              </h2>
-
-              {/* Fast Direct WhatsApp Triggers with Geometric Left-Borders */}
-              <div className="space-y-2.5">
-                {[
-                  {
-                    title: 'A empresa não paga meu FGTS ou atrasa salário',
-                    badge: 'Rescisão Indireta (Art. 483 CLT)',
-                    query: 'FGTS e Salários Atrasados (Rescisão Indireta)'
-                  },
-                  {
-                    title: 'Fui demitido e quero auditar minhas verbas rescisórias',
-                    badge: 'Cálculo de Verbas Rescisórias',
-                    query: 'Cálculo de Verbas Rescisórias e Demissão'
-                  },
-                  {
-                    title: 'Trabalho mais de 8h ou finais de semana sem receber',
-                    badge: 'Horas Extras Não Pagas',
-                    query: 'Cobrança de Horas Extras e Banco de Horas'
-                  },
-                  {
-                    title: 'Fui contratado como PJ/MEI com chefe e horário',
-                    badge: 'Fraude PJ / Vínculo CLT',
-                    query: 'Vínculo Empregatício Fraude PJ MEI'
-                  },
-                  {
-                    title: 'Sofri acidente de trabalho ou fui demitida grávida',
-                    badge: 'Estabilidade Provisória',
-                    query: 'Estabilidade Acidentária ou Gestante'
-                  }
-                ].map((item, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleWhatsAppConsult(item.query)}
-                    className="w-full text-left p-3.5 bg-white hover:bg-slate-50 border-l-4 border-[#1A2B45] border-y border-r border-slate-200 hover:border-l-[#C5A059] transition-colors shadow-xs flex items-center justify-between group cursor-pointer"
-                  >
-                    <div className="space-y-0.5 pr-2">
-                      <span className="text-[10px] font-bold text-[#C5A059] uppercase tracking-wider block">
-                        {item.badge}
-                      </span>
-                      <p className="text-xs sm:text-sm font-semibold text-[#1A2B45] leading-snug">
-                        {item.title}
-                      </p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#1A2B45] flex-shrink-0 transition-transform group-hover:translate-x-0.5" />
-                  </button>
-                ))}
-              </div>
-
-              {/* Office Proximity Sub-banner */}
-              <div className="pt-2 flex items-center justify-between text-xs text-slate-600 bg-white p-3 border border-[#E5E7EB]">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-emerald-600" />
-                  <span>Resposta média em <strong>5 minutos</strong></span>
-                </div>
-                <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[10px]">Sigilo OAB/SP</span>
+                <a
+                  href={slide.buttonHref}
+                  target={slide.buttonHref.startsWith('http') ? '_blank' : '_self'}
+                  rel={slide.buttonHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="inline-block px-8 py-3.5 sm:px-10 sm:py-4 rounded-xs border-2 text-white font-serif text-xs sm:text-sm uppercase tracking-[0.2em] font-bold transition-all duration-300 hover:scale-105 hover:bg-white hover:text-slate-900 cursor-pointer shadow-lg"
+                  style={{ 
+                    borderColor: '#FFFFFF',
+                    backgroundColor: 'rgba(15, 23, 42, 0.6)'
+                  }}
+                >
+                  {slide.buttonText}
+                </a>
               </div>
 
             </div>
           </div>
+        );
+      })}
 
-        </div>
+      {/* Slider Left Arrow Navigation (owl-prev style) */}
+      <button
+        onClick={prevSlide}
+        aria-label="Slide anterior"
+        className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/40 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer shadow-md"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+
+      {/* Slider Right Arrow Navigation (owl-next style) */}
+      <button
+        onClick={nextSlide}
+        aria-label="Próximo slide"
+        className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/40 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer shadow-md"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Slider Dots Indicator */}
+      <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center items-center gap-2.5">
+        {slides.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentSlide(idx)}
+            aria-label={`Ir para o slide ${idx + 1}`}
+            className={`transition-all duration-300 rounded-full cursor-pointer ${
+              idx === currentSlide 
+                ? 'w-8 h-2 bg-white' 
+                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
