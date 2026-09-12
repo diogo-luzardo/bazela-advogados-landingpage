@@ -44,6 +44,74 @@ export const ABOUT_FIRM = {
   ]
 };
 
+export interface PartnerData {
+  id: string;
+  name: string;
+  shortName: string;
+  title: string;
+  role: string;
+  badge: string;
+  experience: string;
+  stats: string;
+  image: string;
+  lead: string;
+  history: string[];
+  highlights: string[];
+  areas: string[];
+  whatsappMessage: string;
+}
+
+export const PARTNERS_DATA: PartnerData[] = [
+  {
+    id: 'daniel-bazela',
+    name: 'Dr. Daniel Bazela',
+    shortName: 'Dr. Daniel',
+    title: 'Dr. Daniel Bazela',
+    role: 'Sócio Fundador',
+    badge: 'Especialista em Direito do Trabalho, Cível e Família',
+    experience: 'Mais de 15 anos de experiência forense',
+    stats: '+5.000 Processos Conduzidos',
+    image: '/daniel.jpeg',
+    lead: 'Advogado atuante com sólida trajetória jurídica e vasta experiência na condução estratégica de litígios complexos.',
+    history: [
+      'Ao longo de mais de 15 anos de prática jurídica ininterrupta, liderou a condução de mais de 5.000 ações judiciais, destacando-se pela combatividade técnica e oratória precisa perante os tribunais.',
+      'Com atuação multidisciplinar, assessora pessoas físicas e empresas de forma personalizada tanto na esfera preventiva quanto no contencioso judicial, construindo defesas técnicas sob medida e negociando acordos sólidos para defender com rigor os direitos e o patrimônio de seus constituintes.'
+    ],
+    highlights: [
+      'Especialista em Direito do Trabalho, Cível e Família',
+      'Mais de 15 anos de experiência e prática forense contínua',
+      'Atuação direta e estratégica em mais de 5.000 processos',
+      'Atendimento consultivo e contencioso personalizado'
+    ],
+    areas: ['Direito do Trabalho', 'Direito Cível', 'Família & Sucessões', 'Litígios Estratégicos'],
+    whatsappMessage: 'Olá, Dr. Daniel! Vi seu perfil no site da Bazela & Freitas e gostaria de uma orientação jurídica.'
+  },
+  {
+    id: 'dalila-freitas',
+    name: 'Dra. Dalila Freitas Bazela',
+    shortName: 'Dra. Dalila',
+    title: 'Dra. Dalila Freitas Bazela',
+    role: 'Sócia Fundadora',
+    badge: 'Advogada Especialista em Direito do Trabalho',
+    experience: 'Mais de 15 anos de atuação dedicada',
+    stats: 'Foco Exclusivo em Direito do Trabalho',
+    image: '/dalila.jpeg',
+    lead: 'Advogada especialista com sólida e reconhecida trajetória na defesa dos direitos dos trabalhadores.',
+    history: [
+      'Possui mais de 15 anos de dedicação exclusiva às relações do trabalho, com histórico de destaque no combate a fraudes contratuais (como pejotização abusiva e contratos MEI simulados), reversões de demissões injustas, rescisões indiretas e acordos de alta relevância.',
+      'Reconhecida pelo atendimento acolhedor, ético e transparente, prioriza a análise detalhada de cada caso para esclarecer direitos, calcular com rigor todas as verbas devidas e lutar pela máxima reparação legal do trabalhador.'
+    ],
+    highlights: [
+      'Advogada Especialista em Direito do Trabalho com foco exclusivo',
+      'Mais de 15 anos de experiência e dedicação forense',
+      'Atuação firme em verbas rescisórias, horas extras e rescisão indireta',
+      'Acolhimento humanizado, transparente e próximo ao cliente'
+    ],
+    areas: ['Direito do Trabalho', 'Rescisão Indireta', 'Fraude PJ/MEI', 'Horas Extras & Adicionais', 'Acidentes & Doenças'],
+    whatsappMessage: 'Olá, Dra. Dalila! Vi seu perfil no site da Bazela & Freitas e gostaria de uma orientação em Direito do Trabalho.'
+  }
+];
+
 export const PRACTICE_AREAS: PracticeArea[] = [
   {
     id: 'civil-contratos',

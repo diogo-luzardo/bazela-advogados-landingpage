@@ -151,7 +151,7 @@ export const ContactFooter: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <img src="/whatsapp.png" alt="WhatsApp" className="w-4 h-4 object-contain flex-shrink-0" />
                 <a 
                   href={`https://wa.me/${OFFICE_INFO.whatsappRaw}`}
                   target="_blank"
