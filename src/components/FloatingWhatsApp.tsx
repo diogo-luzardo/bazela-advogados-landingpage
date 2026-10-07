@@ -90,11 +90,11 @@ export const FloatingWhatsApp: React.FC = () => {
           </div>
         )}
 
-        {/* Circular WhatsApp Button (#25D366) */}
+        {/* Circular WhatsApp Button (#25D366) with pulse ring */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Abrir atendimento no WhatsApp"
-          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl transition-transform hover:scale-105 active:scale-95 cursor-pointer relative group p-3"
+          className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white flex items-center justify-center shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer relative group p-3 animate-pulse-ring"
         >
           <img src={whatsappImg} alt="WhatsApp" className="w-full h-full object-contain" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white animate-pulse" />
