@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['inicio', 'o-escritorio', 'areas-de-atuacao', 'artigos', 'contato'];
+      const sections = ['inicio', 'o-escritorio', 'areas-de-atuacao', 'contato'];
       const scrollPos = window.scrollY + 120;
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -51,7 +51,6 @@ export const Header: React.FC<HeaderProps> = () => {
     { id: 'inicio', label: 'INÍCIO', href: '#inicio' },
     { id: 'o-escritorio', label: 'O ESCRITÓRIO', href: '#o-escritorio' },
     { id: 'areas-de-atuacao', label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
-    { id: 'artigos', label: 'ARTIGOS', href: '#artigos' },
     { id: 'contato', label: 'CONTATO', href: '#contato' },
   ];
 

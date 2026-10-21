@@ -7,7 +7,6 @@ import { PracticeAreas } from './components/PracticeAreas';
 import { AboutSection } from './components/AboutSection';
 import { Partners } from './components/Partners';
 import { CallToActionBanner } from './components/CallToActionBanner';
-import { ArticlesSection } from './components/ArticlesSection';
 import { ContactFooter } from './components/ContactFooter';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { CookieConsentBar } from './components/CookieConsentBar';
@@ -46,9 +45,6 @@ export default function App() {
 
           {/* 7. Call To Action Banner */}
           <CallToActionBanner />
-
-          {/* 8. Artigos */}
-          <ArticlesSection />
         </main>
 
         {/* 9. Footer */}

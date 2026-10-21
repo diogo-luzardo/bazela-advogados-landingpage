@@ -53,9 +53,6 @@ export const ContactFooter: React.FC = () => {
                 <a href="#areas-de-atuacao" className="hover:text-[#C5A059] transition-colors">Áreas de Atuação</a>
               </li>
               <li>
-                <a href="#artigos" className="hover:text-[#C5A059] transition-colors">Artigos</a>
-              </li>
-              <li>
                 <a href="#contato" className="hover:text-[#C5A059] transition-colors">Contato</a>
               </li>
             </ul>
