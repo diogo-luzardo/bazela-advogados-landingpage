@@ -48,11 +48,11 @@ export const Header: React.FC<HeaderProps> = () => {
   };
 
   const navLinks = [
-    { id: 'inicio', label: 'Início', href: '#inicio' },
-    { id: 'o-escritorio', label: 'O Escritório', href: '#o-escritorio' },
-    { id: 'areas-de-atuacao', label: 'Áreas de Atuação', href: '#areas-de-atuacao' },
-    { id: 'artigos', label: 'Artigos', href: '#artigos' },
-    { id: 'contato', label: 'Contato', href: '#contato' },
+    { id: 'inicio', label: 'INÍCIO', href: '#inicio' },
+    { id: 'o-escritorio', label: 'O ESCRITÓRIO', href: '#o-escritorio' },
+    { id: 'areas-de-atuacao', label: 'ÁREAS DE ATUAÇÃO', href: '#areas-de-atuacao' },
+    { id: 'artigos', label: 'ARTIGOS', href: '#artigos' },
+    { id: 'contato', label: 'CONTATO', href: '#contato' },
   ];
 
   return (

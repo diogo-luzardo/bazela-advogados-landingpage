@@ -41,23 +41,18 @@ export const Hero: React.FC = () => {
               </span>
             </div>
 
-            {/* Main Headline (Exact Playfair Display typography matching photo) */}
+            {/* Main Headline (Exact typography and gold color matching photo) */}
             <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[52px] font-bold text-white leading-[1.18] tracking-tight max-w-2xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[52px] font-bold text-[#CCA762] leading-[1.18] tracking-tight max-w-2xl"
               style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
             >
-              Advocacia estratégica para{' '}
-              <span 
-                className="text-[#CCA762] block sm:inline font-bold"
-                style={{ fontFamily: "'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}
-              >
-                trabalhadores, empresas e famílias
-              </span>
+              Escritório com foco na<br />
+              área trabalhista!
             </h1>
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base text-slate-300 max-w-xl font-sans leading-relaxed">
-              Atendimento próximo, análise responsável e atuação jurídica conduzida diretamente pelos sócios.
+              Atendimento próximo, analise responsável e atuação jurídica conduzida por advogados altamente qualificados.
             </p>
 
             {/* Accent divider line above gavel callout */}

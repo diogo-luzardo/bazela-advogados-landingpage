@@ -6,10 +6,7 @@ import {
   Mail, 
   Phone, 
   MessageCircle, 
-  ArrowRight,
-  Instagram,
-  Linkedin,
-  Facebook
+  ArrowRight
 } from 'lucide-react';
 
 export const ContactFooter: React.FC = () => {
@@ -33,37 +30,6 @@ export const ContactFooter: React.FC = () => {
             {/* OAB Badge Box */}
             <div className="inline-block px-3 py-1.5 rounded border border-[#C5A059]/40 bg-white/5 text-[11px] font-semibold text-[#C5A059]">
               OAB/SP 48.912 — Sociedade de Advogados
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="flex items-center gap-3 pt-1">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded border border-white/20 bg-white/5 text-slate-300 hover:text-white hover:border-[#C5A059] flex items-center justify-center transition-all"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded border border-white/20 bg-white/5 text-slate-300 hover:text-white hover:border-[#C5A059] flex items-center justify-center transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded border border-white/20 bg-white/5 text-slate-300 hover:text-white hover:border-[#C5A059] flex items-center justify-center transition-all"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
             </div>
           </div>
 
