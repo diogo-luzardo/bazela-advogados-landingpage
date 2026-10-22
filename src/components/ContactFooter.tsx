@@ -19,18 +19,13 @@ export const ContactFooter: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-white/10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
-          {/* Column 1 (lg:col-span-4): Logo, Bio, OAB Badge & Socials */}
+          {/* Column 1 (lg:col-span-4): Logo, Bio */}
           <div className="lg:col-span-4 space-y-6">
             <Logo variant="dark" size="lg" />
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
               Advocacia pautada pela ética, proximidade e responsabilidade, com atendimento direto pelos sócios a trabalhadores, empresas e famílias.
             </p>
-
-            {/* OAB Badge Box */}
-            <div className="inline-block px-3 py-1.5 rounded border border-[#C5A059]/40 bg-white/5 text-[11px] font-semibold text-[#C5A059]">
-              OAB/SP 48.912 — Sociedade de Advogados
-            </div>
           </div>
 
           {/* Column 2 (lg:col-span-2): Navigation Links */}
@@ -121,7 +116,7 @@ export const ContactFooter: React.FC = () => {
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-slate-400 flex-shrink-0" />
                 <a href={`mailto:${OFFICE_INFO.email}`} className="hover:text-white transition-colors">
-                  contato@bazelaefreitas.adv.br
+                  {OFFICE_INFO.email}
                 </a>
               </div>
 

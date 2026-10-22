@@ -12,8 +12,8 @@ export const OFFICE_INFO: OfficeLocation = {
   phone: '(11) 2978-4500',
   whatsapp: '(11) 91129-7896',
   whatsappRaw: '5511911297896',
-  email: 'contato@bazelaefreitas.adv.br',
-  oabNumber: 'OAB/SP 48.912 / Sociedade de Advogados',
+  email: 'df.adv@hotmail.com',
+  oabNumber: '',
   hours: 'Segunda a Sexta: 09h00 às 18h00 | Atendimento Presencial & Online',
   googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.7845371520626!2d-46.62685982379308!3d-23.504245678839074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce587eb0a0ad89%3A0x6b7ca2c5dbef92a5!2sSantana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr'
 };
@@ -23,7 +23,7 @@ export const ABOUT_FIRM = {
   lead: 'Com sede em Santana e atuação em todo o estado de São Paulo, o escritório Bazela & Freitas Advogados Associados nasceu com a vocação de oferecer advocacia de excelência para pessoas físicas e empresas.',
   paragraphs: [
     'Entendemos que cada demanda jurídica carrega histórias, patrimônios e decisões cruciais. Por essa razão, repudiamos soluções padronizadas. Nossos sócios e equipe dedicam-se pessoalmente a cada caso, desenhando estratégias sob medida que conciliam segurança preventiva e firmeza contenciosa.',
-    'Pautados pela integridade, transparência irrestrita e respeito às normas éticas da OAB, oferecemos aos nossos clientes assessoria jurídica ágil, combinando o acolhimento do atendimento presencial com a comodidade e rapidez das ferramentas digitais modernas.'
+    'Pautados pela integridade, transparência irrestrita e respeito às normas éticas da advocacia, oferecemos aos nossos clientes assessoria jurídica ágil, combinando o acolhimento do atendimento presencial com a comodidade e rapidez das ferramentas digitais modernas.'
   ],
   pillars: [
     {
@@ -270,7 +270,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     id: 'faq-3',
     question: 'Como são estabelecidos os honorários advocatícios?',
-    answer: 'Trabalhamos com clareza e transparência desde o primeiro contato, em estrita observância à Tabela de Honorários da OAB/SP e ao Código de Ética. Cada proposta é formalizada em contrato detalhado com descrição de serviços, sem surpresas ou cobranças ocultas.',
+    answer: 'Trabalhamos com clareza e transparência desde o primeiro contato, em estrita observância às normas e ao Código de Ética da advocacia. Cada proposta é formalizada em contrato detalhado com descrição de serviços, sem surpresas ou cobranças ocultas.',
     category: 'honorarios'
   },
   {

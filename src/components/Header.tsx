@@ -7,8 +7,7 @@ import {
   Menu, 
   X, 
   MessageCircle,
-  Instagram,
-  Linkedin
+  Mail
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -90,29 +89,16 @@ export const Header: React.FC<HeaderProps> = () => {
             </div>
           </div>
 
-          {/* Right: Social Media Icons */}
+          {/* Right: Contact Email */}
           <div className="flex items-center gap-3 text-slate-300">
             <span className="text-slate-600 hidden sm:inline">|</span>
-            <div className="flex items-center gap-2.5">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#C5A059] transition-colors p-1"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#C5A059] transition-colors p-1"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-3.5 h-3.5" />
-              </a>
-            </div>
+            <a 
+              href={`mailto:${OFFICE_INFO.email}`} 
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-slate-400" />
+              <span>{OFFICE_INFO.email}</span>
+            </a>
           </div>
 
         </div>

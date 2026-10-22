@@ -59,7 +59,7 @@ export interface OfficeLocation {
   whatsapp: string;
   whatsappRaw: string;
   email: string;
-  oabNumber: string;
+  oabNumber?: string;
   hours: string;
   googleMapsEmbedUrl: string;
 }
